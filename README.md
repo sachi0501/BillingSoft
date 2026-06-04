@@ -17,14 +17,16 @@ The app is configured for your Aiven PostgreSQL database:
 ```text
 Host: astranexis-billingsoft-sachidanand-aiven-2023.i.aivencloud.com
 Port: 22261
-Database: defaultdb
+Database: Billing
 User: avnadmin
 SSL mode: require
 ```
 
-Set the password in your shell before starting the app. Do not commit the password into source control.
+Set the database values in your shell before starting the app. Do not commit the real password into source control.
 
 ```powershell
+$env:DB_URL="jdbc:postgresql://astranexis-billingsoft-sachidanand-aiven-2023.i.aivencloud.com:22261/Billing?sslmode=require"
+$env:DB_USERNAME="avnadmin"
 $env:DB_PASSWORD="your-aiven-password"
 .\mvnw.cmd spring-boot:run
 ```
@@ -32,7 +34,7 @@ $env:DB_PASSWORD="your-aiven-password"
 You can override all connection values with environment variables:
 
 ```properties
-DB_URL=jdbc:postgresql://astranexis-billingsoft-sachidanand-aiven-2023.i.aivencloud.com:22261/defaultdb?sslmode=require
+DB_URL=jdbc:postgresql://astranexis-billingsoft-sachidanand-aiven-2023.i.aivencloud.com:22261/Billing?sslmode=require
 DB_USERNAME=avnadmin
 DB_PASSWORD=your-aiven-password
 DDL_AUTO=update
@@ -67,6 +69,9 @@ Render will provide the `PORT` environment variable automatically. The Dockerfil
 Recommended Render environment variables:
 
 ```properties
+DB_URL=jdbc:postgresql://astranexis-billingsoft-sachidanand-aiven-2023.i.aivencloud.com:22261/Billing?sslmode=require
+DB_USERNAME=avnadmin
+DB_PASSWORD=your-aiven-password
 DDL_AUTO=update
 ```
 
